@@ -6,7 +6,7 @@ Node v.6.4 or later
 
 # Usage
 Generate the Swagger file outputting in either json or yaml.
-Default to json.
+Defaults to json.
 
 `node swagger --output json`
 
