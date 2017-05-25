@@ -12,3 +12,4 @@ Defaults to json.
 
 `node swagger --output yaml`
 
+Will validate the file after generation and output any Swagger errors to console
