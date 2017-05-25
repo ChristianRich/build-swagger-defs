@@ -1,6 +1,7 @@
 const resolveRefs = require('json-refs').resolveRefs
+	, SwaggerParser = require('swagger-parser')
 	, YAML = require('yaml-js')
-	, toYaml = require('yamljs') // Not a duplicate of 'yaml-js'. These packages cater for different functionality but happen to have similar names
+	, toYaml = require('yamljs')
 	, fs = require('fs')
 	, path = require('path')
 	, src = path.resolve(process.cwd(), './src/index.yaml')
@@ -17,23 +18,21 @@ if(argv.output && argv.output.length){
 output = output.toLowerCase();
 
 if(output !== 'json' && output !== 'yaml'){
-	console.error('Error: Expecting json or yaml for param type');
-	process.exit(1);
+	throw('Error: Expecting json or yaml for param type');
 }
 
-dest = path.resolve(process.cwd(), './output/index.' + output)
+dest = path.resolve(process.cwd(), './output/index.' + output);
 
 console.log(`Building Swagger spec using output format ${output}`);
-console.log(`src: ${src}`)
-console.log(`dest: ${dest}`)
+console.log(`src: ${src}`);
+console.log(`dest: ${dest}`);
 
 try{
 	swaggerSpecSrc = YAML.load(
 		fs.readFileSync(src)
 	);
 } catch(e){
-	console.log(`Unable to read Swagger src ${src}: ${e}`);
-	return process.exit(1);
+	throw (`Unable to read Swagger src ${src}: ${e}`);
 }
 
 const options = {
@@ -65,19 +64,20 @@ resolveRefs(
 		data = yaml;
 	}
 
-	fs.writeFile(dest, data, function(err){
+	try{
+		fs.writeFileSync(dest, data);
+	} catch(e){
+		throw e;
+	}
 
-		if(err){
-			console.log(err);
-			return process.exit(1);
-		}
+	return SwaggerParser.validate(dest);
+})
 
-		console.log('Completed');
-		process.exit(0);
-	});
+.then(function(api){
+	console.log('Completed without errors');
+	console.log(api);
 })
 
 .catch(function(err){
-	console.error(err);
-	process.exit(1);
+	console.log(err);
 });
