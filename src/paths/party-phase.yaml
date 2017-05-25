@@ -1,0 +1,132 @@
+get:
+  tags:
+  - Party-Phase
+  summary: Get all parties within a phase / all phases under a party
+  produces:
+  - application/json
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: Party_Id
+    in: query
+    type: integer
+  - name: Phase_Id
+    in: query
+    type: integer
+  - name: Is_Active
+    in: query
+    description: Where the party phase relationship is active
+    type: string
+    enum:
+    - Y
+    - N
+    default: Y
+  - name: Order_Effective_Date
+    in: query
+    type: string
+    enum:
+    - ASC
+    - DESC
+    default: DESC
+  - name: limit
+    in: query
+    type: integer
+    example: 30
+    description: Default limit is 30 if not specified
+  - name: offset
+    in: query
+    type: integer
+    example: 0
+    description: Default offset is 0 if not specified
+post:
+  tags:
+  - Party-Phase
+  summary: Add party to phase
+  produces:
+  - application/json
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: body
+    in: body
+    schema:
+      type: object
+      properties:
+        Party_Id:
+          type: integer
+        Phase_Id:
+          type: integer
+put:
+  tags:
+  - Party-Phase
+  summary: Update party to phase
+  produces:
+  - application/json
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: body
+    in: body
+    schema:
+      type: object
+      properties:
+        Party_Id:
+          type: integer
+        Phase_Id:
+          type: integer
+        Is_Active:
+          type: string
+          enum:
+          - Y
+          - N
+          default: N
+delete:
+  tags:
+  - Party-Phase
+  summary: Remove a party from phase
+  produces:
+  - application/json
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: body
+    in: body
+    schema:
+      type: object
+      properties:
+        Party_Id:
+          type: integer
+        Phase_Id:
+          type: integer

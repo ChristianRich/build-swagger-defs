@@ -1,0 +1,32 @@
+type: object
+properties:
+  Custom_Name:
+    type: string
+    example: My goal
+  Importance_Text:
+    type: string
+    example: This is an important goal
+  Goal_Code_Id:
+    type: string
+    example: G1_Cash
+  Objective_Code_Id:
+    type: string
+    example: C1_Educ_OBJ_Save
+  Priority_Code_Id:
+    type: string
+    example: High
+  Status_Code_Id:
+    type: string
+    example: Active
+  Phase_Id:
+    type: integer
+    example: 1
+  Party_Id:
+    type: array
+    items:
+      type: integer
+    example:
+    - 1
+  Scenario_Id:
+    type: integer
+    example: 1

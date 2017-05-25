@@ -1,0 +1,26 @@
+{
+  "name": "amp-swagger-defs",
+  "version": "1.0.0",
+  "description": "AMP Swagger definitions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "swagger": "node ./build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://christianrich@github.com/ChristianRich/amp-swagger-defs.git"
+  },
+  "author": "Christian Rich <christianrich.me@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChristianRich/amp-swagger-defs/issues"
+  },
+  "homepage": "https://github.com/ChristianRich/amp-swagger-defs#readme",
+  "dependencies": {
+    "json-refs": "^3.0.0",
+    "minimist": "^1.2.0",
+    "yaml-js": "^0.1.5",
+    "yamljs": "^0.2.10"
+  }
+}

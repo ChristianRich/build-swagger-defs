@@ -1,0 +1,27 @@
+type: object
+properties:
+  Custom_Name:
+    type: string
+    example: Accident
+  Value:
+    type: string
+    example: Car accident
+  Importance_Text:
+    type: string
+    example: Active
+  Notes:
+    type: string
+    example: What happened
+  Event_Code_Id:
+    type: string
+    example: MM_CntrLnk_AgePen
+  Event_Parameters:
+    type: object
+    example:
+    - Value: '1000'
+      Question_Code_Id: Pension_Ann_Fund
+  Party_Ids:
+    type: object
+    example:
+    - 1
+    - 2

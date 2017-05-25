@@ -1,0 +1,44 @@
+type: object
+properties:
+  Goal_Code_Id:
+    type: string
+    description: From reference code table
+    example: G1_Cash
+  Timeframe_Code_Id:
+    type: string
+    description: From reference code table
+    example: Later
+  Status_Code_Id:
+    type: string
+    description: From reference code table
+    example: Active
+  Priority_Code_Id:
+    type: string
+    description: From reference code table
+    example: High
+  Custom_Name:
+    type: string
+    description: Goal name
+    example: I want to buy a car
+    maxLength: 150
+  Notes:
+    type: string
+    description: Note of a goal
+    example: This is very important to me
+  Progress_Step:
+    type: string
+    example: 1
+  Progress_Track:
+    type: string
+    example: On the track
+  Joint_Goal_Indicator:
+    type: string
+    description: Is this goal a joint goal?
+    example: Y
+  Effective_Date:
+    type: string
+    format: date
+    example: '2016-11-15'
+  Importance_Text:
+    type: string
+    example: This goal is very important to me

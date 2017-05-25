@@ -1,0 +1,16 @@
+type: object
+properties:
+  items:
+    type: array
+    description: |
+      The complete list of action definitions.
+
+      Source - A union of RDS.Action_Area_Code, RDS.Action_Group_Code and RDS.Action_Code
+    items:
+      "$ref": "#/definitions/ActionDefinition"
+    maxItems: 300
+  _links:
+    type: object
+    properties:
+      self:
+        "$ref": "#/definitions/Link"

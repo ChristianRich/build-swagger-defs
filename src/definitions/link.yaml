@@ -1,0 +1,68 @@
+type: object
+required:
+- href
+properties:
+  href:
+    type: string
+    format: uri
+    description: |
+      The "href" property is REQUIRED.
+      Its value is either a URI https://tools.ietf.org/html/rfc3986 or a URI Template https://tools.ietf.org/html/rfc6570.
+      If the value is a URI Template then the Link Object SHOULD have a
+      "templated" attribute whose value is true.
+  templated:
+    type: boolean
+    description: |
+      The "templated" property is OPTIONAL.
+      Its value is boolean and SHOULD be true when the Link Object's "href"
+      property is a URI Template.
+      Its value SHOULD be considered false if it is undefined or any other
+      value than true.
+    default: false
+  type:
+    type: string
+    description: |
+      The "type" property is OPTIONAL.
+      Its value is a string used as a hint to indicate the media type
+      expected when dereferencing the target resource.
+  deprecation:
+    type: string
+    format: uri
+    description: |
+      The "deprecation" property is OPTIONAL.
+      Its presence indicates that the link is to be deprecated (i.e.
+      removed) at a future date.  Its value is a URL that SHOULD provide
+      further information about the deprecation.
+      A client SHOULD provide some notification (for example, by logging a
+      warning message) whenever it traverses over a link that has this
+      property.  The notification SHOULD include the deprecation property's
+      value so that a client maintainer can easily find information about
+      the deprecation.
+  name:
+    type: string
+    description: |
+      The "name" property is OPTIONAL.
+      Its value MAY be used as a secondary key for selecting Link Objects
+      which share the same relation type.
+  profile:
+    type: string
+    format: uri
+    description: |
+      The "profile" property is OPTIONAL.
+      Its value is a string which is a URI that hints about the profile (as
+      defined by https://tools.ietf.org/html/draft-wilde-profile-link-04) of the target resource.
+  title:
+    type: string
+    description: |
+      The "title" property is OPTIONAL.
+      Its value is a string and is intended for labelling the link with a
+      human-readable identifier (as defined by https://tools.ietf.org/html/rfc5988).
+  hreflang:
+    type: string
+    description: |
+      The "hreflang" property is OPTIONAL.
+      Its value is a string and is intended for indicating the language of
+      the target resource (as defined by https://tools.ietf.org/html/rfc5988).
+description: |
+  A Link Object represents a hyperlink from the containing resource to a URI.
+  https://tools.ietf.org/html/draft-kelly-json-hal-06#section-5

@@ -1,0 +1,73 @@
+get:
+  tags:
+  - Party
+  summary: Get all parties
+  produces:
+  - application/json
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: Party_Id
+    in: query
+    description: Search party by id
+    type: integer
+  - name: Scv_Indicator
+    in: query
+    description: whether this party has a record in CMDM
+    type: integer
+  - name: Is_Active
+    in: query
+    description: Where the phase is active
+    type: string
+    enum:
+    - Y
+    - N
+    default: Y
+  - name: Order_Effective_Date
+    in: query
+    type: string
+    enum:
+    - ASC
+    - DESC
+    default: DESC
+  - name: limit
+    in: query
+    type: integer
+    example: 30
+    description: Default limit is 30 if not specified
+  - name: offset
+    in: query
+    type: integer
+    example: 0
+    description: Default offset is 0 if not specified
+post:
+  tags:
+  - Party
+  summary: Create a party
+  produces:
+  - application/json
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: body
+    description: Fields for the party to be inserted
+    in: body
+    required: true
+    schema:
+      "$ref": "#/definitions/Party"

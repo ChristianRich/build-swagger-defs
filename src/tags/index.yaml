@@ -1,0 +1,34 @@
+- name: Application
+  description: Application goals, objectives reference
+- name: Code
+  description: All reference code
+- name: Goal
+  description: Goal services
+- name: Phase
+  description: Phase service
+- name: Party
+  description: Party service
+- name: Party-Phase
+  description: Party Phase service
+- name: Party-Phase-Goal
+  description: Party Phase Goal service
+- name: Party-Goal-Objective
+  description: Party Goal Objective service
+- name: Objective
+  description: Objective service
+- name: Response
+  description: Response service
+- name: Scenario
+  description: Scenario service
+- name: Objective-Scenario
+  description: Objective Scenario Service
+- name: Profile
+  description: Profile service(R6)
+- name: Projection
+  description: Projection service(R6)
+- name: Assumption
+  description: Assumption service(R6)
+- name: Action
+  description: Action service(R6)
+- name: Event
+  description: Event service(R6)

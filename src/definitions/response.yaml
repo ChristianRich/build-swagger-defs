@@ -1,0 +1,14 @@
+type: object
+properties:
+  Question_Id:
+    type: string
+    example: OQ_AchievementAge
+  Objective_Id:
+    type: integer
+    example: 1
+  Scenario_Id:
+    type: integer
+    example: 1
+  Value:
+    type: string
+    example: Answer

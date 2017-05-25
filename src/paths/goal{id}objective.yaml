@@ -1,0 +1,39 @@
+get:
+  tags:
+  - Objective
+  summary: Get all objectives by Goal Id
+  produces:
+  - application/json
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    in: path
+    required: true
+    type: integer
+    description: ID of goal
+  - name: Order_Effective_Date
+    in: query
+    type: string
+    enum:
+    - ASC
+    - DESC
+    default: DESC
+  - name: limit
+    in: query
+    type: integer
+    example: 30
+    description: Default limit is 30 if not specified
+  - name: offset
+    in: query
+    type: integer
+    example: 0
+    description: Default offset is 0 if not specified

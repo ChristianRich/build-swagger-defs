@@ -1,0 +1,70 @@
+get:
+  tags:
+  - Party
+  summary: Get party by id
+  produces:
+  - application/json
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    in: path
+    required: true
+    type: integer
+put:
+  tags:
+  - Party
+  summary: Update party by id
+  produces:
+  - application/json
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    in: path
+    required: true
+    type: integer
+  - name: body
+    description: Fields to be updated
+    in: body
+    required: true
+    schema:
+      "$ref": "#/definitions/Party"
+delete:
+  tags:
+  - Party
+  summary: Delete party by id
+  description: Set Is_Deleted to Y
+  produces:
+  - application/json
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    in: path
+    required: true
+    type: integer

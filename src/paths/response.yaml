@@ -1,0 +1,126 @@
+get:
+  tags:
+  - Response
+  produces:
+  - application/json
+  summary: Get response
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: Response_Id
+    in: query
+    type: integer
+  - name: Question_Id
+    in: query
+    type: string
+  - name: Scenario_Id
+    in: query
+    type: integer
+  - name: Objective_Id
+    in: query
+    type: integer
+  - name: Value
+    in: query
+    type: string
+  - name: Is_Deleted
+    in: query
+    type: string
+    enum:
+    - Y
+    - N
+    default: N
+  - name: Order_Updated_Date
+    in: query
+    type: string
+    enum:
+    - ASC
+    - DESC
+    default: DESC
+  - name: limit
+    in: query
+    type: integer
+    example: 30
+    description: Default limit is 30 if not specified
+  - name: offset
+    in: query
+    type: integer
+    example: 0
+    description: Default offset is 0 if not specified
+put:
+  tags:
+  - Response
+  produces:
+  - application/json
+  summary: Update a response
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: body
+    description: Fields for the response to be inserted
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        Objective_Id:
+          type: integer
+          example: 1
+        Question_Id:
+          type: string
+          example: OQ_LumpSumBudget
+        Value:
+          type: string
+          example: Answer
+  responses:
+    '200':
+      description: Success
+    '400':
+      description: Error
+      schema:
+        "$ref": "#/definitions/Error"
+post:
+  tags:
+  - Response
+  produces:
+  - application/json
+  summary: Create a response
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: body
+    description: Fields for the response to be inserted
+    in: body
+    required: true
+    schema:
+      "$ref": "#/definitions/Response"
+  responses:
+    '200':
+      description: Success
+    '400':
+      description: Error
+      schema:
+        "$ref": "#/definitions/Error"

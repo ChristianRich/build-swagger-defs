@@ -1,0 +1,15 @@
+description: Describes the validation error
+type: object
+properties:
+  name:
+    type: string
+    description: the name of the invalid parameter
+    example: startDate
+  value:
+    type: string
+    description: the invalid value
+    example: thisIs Not a Date
+  message:
+    type: string
+    description: A message that describes the nature of the validation error
+    example: '"thisIs Not a Date" is not a valid date'

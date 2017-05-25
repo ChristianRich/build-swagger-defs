@@ -1,0 +1,125 @@
+patch:
+  tags:
+    - Assumption
+  produces:
+    - application/json
+  summary: Update Assumptions
+  description: Update the assumptions for a scenario
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    description: The ID of the scenario which the assumtions belong to
+    in: path
+    type: integer
+    required: true
+  - name: inflationAdjust
+    description: If true the results are shown in nominal future dollar amounts, otherwise all results are shown in today’s dollars, discounted at the simulated rates of future wage inflation
+    in: formData
+    type: boolean
+    x-category: Projection Settings
+    x-joint: true
+  - name: capitalExhaustionMale
+    description: Age of capital exhaustion for male
+    in: formData
+    type: array
+    items:
+      type: integer
+      maximum: 100
+      minimum: 1
+      x-validation: |
+        if( value <= 100 ) throw 'au.com.amp.advice.error.validation.over.maximum';
+        if( value <= 1 ) throw 'au.com.amp.advice.error.validation.under.minimum';
+      x-unit: 'age'
+    maxItems: 2
+    x-category: About me
+    x-joint: false
+  - name: capitalExhaustionFemale
+    description: Age of capital exhaustion for female
+    in: formData
+    type: array
+    items:
+      type: integer
+      maximum: 100
+      minimum: 1
+      x-validation: |
+        if( value <= 100 ) throw 'au.com.amp.advice.error.validation.over.maximum';
+        if( value <= 1 ) throw 'au.com.amp.advice.error.validation.under.minimum';
+      x-unit: 'age'
+    maxItems: 2
+    x-category: About me
+    x-joint: false
+    maximum: 100
+    minimum: 0
+  - name: retirementAge
+    description: When employment income stops
+    in: formData
+    type: array
+    items:
+      type: integer
+      maximum: 100
+      minimum: 1
+      x-unit: age
+      x-validation: |
+        if( value <= 100 ) throw 'au.com.amp.advice.error.validation.over.maximum';
+        if( value <= 1 ) throw 'au.com.amp.advice.error.validation.under.minimum';
+    maxItems: 2
+    x-category: About me
+    x-joint: false
+  - name: assetAllocationGrowthPercentSuper
+    description: Weight of asset allocation within super fund
+    in: formData
+    type: array
+    items:
+      type: string
+      enum:
+        - '0% Growth'
+        - '30% Growth'
+        - '50% Growth'
+        - '70% Growth'
+        - '85% Growth'
+        - '100% Growth'
+    maxItems: 2
+    x-category: 'Super & Pension'
+    x-joint: false
+  - name: assetAllocationGrowthPercentPension
+    description: Weight of asset allocation within pension fund
+    in: formData
+    type: array
+    items:
+      type: string
+      enum:
+        - '0% Growth'
+        - '30% Growth'
+        - '50% Growth'
+        - '70% Growth'
+        - '85% Growth'
+        - '100% Growth'
+    maxItems: 2
+    x-category: 'Super & Pension'
+    x-joint: false
+  - name: goalPropertyPurchaseInitialExpensesPercent
+    description: Stamp duty and other 1 off expenses
+    in: formData
+    type: number
+    x-unit: 'percent'
+    x-validation: |
+      if( value <= 100 ) throw 'au.com.amp.advice.error.validation.over.maximum';
+      if( value <= 0 ) throw 'au.com.amp.advice.error.validation.under.minimum';
+    maximum: 100
+    minimum: 0
+    x-category: 'Property'
+    x-joint: true
+  responses:
+    '204':
+      $ref: '#/responses/NoContent'
+    '400':
+      $ref: '#/responses/BadRequest'

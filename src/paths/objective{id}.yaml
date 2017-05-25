@@ -1,0 +1,130 @@
+get:
+  tags:
+  - Objective
+  produces:
+  - application/json
+  summary: Get objective by id
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    in: path
+    required: true
+    type: integer
+delete:
+  tags:
+  - Objective
+  produces:
+  - application/json
+  summary: Delete objective by id
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    in: path
+    required: true
+    type: integer
+put:
+  tags:
+  - Objective
+  produces:
+  - application/json
+  summary: Update objective by id
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    in: path
+    required: true
+    type: integer
+  - name: body
+    description: Fields to be updated
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        Objective_Code_Id:
+          type: string
+          example: C1_Educ_OBJ_Save
+        Timeframe_Code_Id:
+          type: string
+          example: Later
+        Priority_Code_Id:
+          type: string
+          example: High
+        Status_Code_Id:
+          type: string
+          example: Parked
+        Party_Id:
+          type: object
+          example:
+          - 1
+          - 2
+        Response:
+          type: object
+          example:
+          - Question_Code_Id: OQ_PaymentStartDate
+            Scenario_Id: '1'
+            Objective_Id: '1'
+            Value: '2016'
+patch:
+  tags:
+  - Objective
+  produces:
+  - application/json
+  summary: Update objective by id and captures a note
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    in: path
+    required: true
+    type: integer
+  - name: body
+    description: Fields to be updated
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        Notes:
+          type: string
+          example: Note example text
+        Is_Active:
+          type: string
+          example: Note example text
+        Response:
+          type: object

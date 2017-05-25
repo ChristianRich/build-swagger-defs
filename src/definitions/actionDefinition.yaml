@@ -1,0 +1,64 @@
+type: object
+required:
+- id
+- name
+- type
+properties:
+  id:
+    type: integer
+    description: |
+      The ID of the Action.
+
+      Source - RDS.Action_Area_Code.Action_Area_Code_Id || RDS.Action_Group_Code.Action_Group_Code_Id || RDS.Action_Code.Action_Code_Id
+  name:
+    type: string
+    description: |
+      The Name of the Action. Source - RDS.Action_Area_Code.Name || RDS.Action_Group_Code.Name || RDS.Action_Code.Name
+    maxLength: 300
+  type:
+    type: string
+    description: |
+      They type of action definition this is Source - `AdviceArea` if it's in RDS.Action_Area_Code, `StrategyGroup` if it's in RDS.Action_Group_Code, `Strategy` if it's in RDS.Action_Code
+    enum:
+    - AdviceArea
+    - StrategyGroup
+    - Strategy
+  fields:
+    type: array
+    description: |
+      The settable fields when creating an action instance.
+      Source - RDS.Action_Attributes
+    items:
+      type: object
+      description: TBC
+      properties: {}
+    maxItems: 300
+  millimanModelable:
+    type: boolean
+    description: |
+      Can milliman model this action?
+      Source - RDS.Action_Code.Milliman_Indicator
+  _links:
+    type: object
+    properties:
+      self:
+        "$ref": "#/definitions/Link"
+      items:
+        type: array
+        description: |
+          The links to the action definitions that belong to this `AdviceArea` or `StrategyGroup`. Source - RDS.Action_Group_Code.Action_Area_Code_Id || RDS.Action_Code.Action_Group_Code_Id
+        items:
+          "$ref": "#/definitions/Link"
+      up:
+        type: object
+        description: |
+          A link to the `AdviceArea` or `StrategyGroup` that this action definition belongs to Source - RDS.Action_Group_Code.Action_Area_Code_Id || RDS.Action_Code.Action_Group_Code_Id || null if in Action_Area_Code
+        properties:
+          href:
+            type: string
+            format: uri
+description: "A definition for an action.\nActions are available in the following
+  hierarchy:\n  - Advice Areas\n  - Strategy Grouping\n  - Strategy\n  \nThe `type`
+  field represents an action's position in that hierarchy.\n\n- Advice Area Action
+  defintions will not have an `up` link.\n- Implemntable actions definitions will
+  not have an `items` link\n\nOther fields TBC\n"

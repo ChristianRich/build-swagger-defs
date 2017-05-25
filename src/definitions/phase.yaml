@@ -1,0 +1,17 @@
+type: object
+properties:
+  Phase_Type_Code_Id:
+    type: string
+    description: Phase type code
+    example: EXPLORE
+  External_Reference_Id:
+    type: string
+    description: Indicator where the phase is created from
+    example: ADP_01
+  Phase_Locked_Indicator:
+    type: string
+    example: N
+  Joint_Goal_Indicator:
+    type: string
+    description: Is this goal a joint goal?
+    example: N

@@ -1,0 +1,57 @@
+ETag:
+  description: |
+    The ETag response-header field provides the value of the entity tag for the requested entity.
+    The entity tag MAY be used for comparison with other entities from the same resource.
+
+    https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19
+  type: string
+  pattern: '([wW]/)?"([^"]|\\")*"'
+Cache-Control:
+  description: |
+    The Cache-Control general-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain. The directives specify behavior intended to prevent caches from adversely interfering with the request or response. These directives typically override the default caching algorithms. Cache directives are unidirectional in that the presence of a directive in a request does not imply that the same directive is to be given in the response.
+
+    https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
+  type: array
+  items:
+    collectionFormat: csv
+    type: string
+Vary:
+  description: |
+    The Vary field value indicates the set of request-header fields that fully determines, while the response is fresh, whether a cache is permitted to use the response to reply to a subsequent request without revalidation.
+
+    https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.44
+  type: array
+  items:
+    collectionFormat: csv
+    type: string
+Content-Type:
+  description: |
+      The Content-Type entity-header field indicates the media type of the entity-body sent to the recipient or, in the case of the HEAD method, the media type that would have been sent had the request been a GET.
+
+      https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17
+  type: string
+Date:
+  description: |
+      The Date general-header field represents the date and time at which the message was originated, having the same semantics as orig-date in RFC 822.
+
+      https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.18
+  type: string
+Retry-After:
+  description: |
+    The Retry-After response-header field can be used with a 503 (Service Unavailable) response to indicate how long the service is expected to be unavailable to the requesting client.
+
+    https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.37
+  type: string
+WWW-Authenticate:
+  description: |
+    The WWW-Authenticate response-header field MUST be included in 401 (Unauthorized) response messages. The field value consists of at least one challenge that indicates the authentication scheme(s) and parameters applicable to the Request-URI.
+
+    https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.47
+  type: string
+Location:
+  description: |
+    The Location response-header field is used to redirect the recipient to a location other than the Request-URI for completion of the request or identification of a new resource. For 201 (Created) responses, the Location is that of the new resource which was created by the request. For 3xx responses, the location SHOULD indicate the server's preferred URI for automatic redirection to the resource. The field value consists of a single absolute URI.
+
+    https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30
+  type: string
+  format: uri

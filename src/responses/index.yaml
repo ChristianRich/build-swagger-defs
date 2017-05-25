@@ -1,0 +1,75 @@
+Created:
+  description: Created
+  headers:
+    Location:
+      x-additional-description:
+        Set this to the URL of the created resource
+      $ref: "#/headers/Location"
+    ETag:
+      x-additional-description:
+        Set this to the Entity Tag of the create resource
+      $ref: "#/headers/ETag"
+NoContent:
+  description: Action was performed successfully
+NotFound:
+  description: The resource requested does not exist
+BadRequest:
+  description: Bad Request. A list of the validation errors will be included in the body
+  schema:
+    $ref: "#/definitions/ValidationErrorsList"
+Unauthorized:
+  description: Unauthorized
+  headers:
+     WWW-Authenticate:
+      $ref: "#/headers/WWW-Authenticate"
+Forbidden:
+  description: Forbidden
+Conflict:
+  description: |
+    The request could not be completed due to a conflict with the current state of the resource.
+     e.g. your trying to add an objective to a scenario and it allready has the maximum number of objectives.
+  schema:
+    type: object
+    properties:
+      conflictType:
+        description: |
+          The type of conflict type that has occured.
+
+          If presenting an error message to a user, clients should map the type to an appropriate error message
+          rather than displaying the type
+        type: string
+        example: au.com.amp.advice.error.conflict.too-many-objectives
+NotImplemented:
+  description: Not Implemented
+ServiceUnavailable:
+  description: Service Unavailable
+  headers:
+     Retry-After:
+      $ref: "#/headers/Retry-After"
+#CollectionPage:
+#  description: A Page of a collection
+#  schema:
+#    $ref: "./src/main/exchange-formats/example/collection.yaml#/Page"
+#  headers:
+#    ETag:
+#      $ref: "#/headers/ETag"
+#    Cache-Control:
+#      $ref: "#/headers/Cache-Control"
+#    Vary:
+#      $ref: "#/headers/Vary"
+#    Content-Type:
+#      $ref: "#/headers/Content-Type"
+#    Date:
+#      $ref: "#/headers/Date"
+GenricObject:
+  description: A Generic Response containing a JSON Object
+  schema:
+    type: object
+GenricArray:
+  description: A Generic Response containing an array of JSON Objects
+  schema:
+    type: array
+    items:
+      type: object
+Genric:
+  description: A Generic Response

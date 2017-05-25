@@ -1,0 +1,72 @@
+get:
+  tags:
+  - Goal
+  summary: Get goal by id
+  produces:
+  - application/json
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    in: path
+    required: true
+    type: integer
+    description: ID of goal to fetch
+put:
+  tags:
+  - Goal
+  produces:
+  - application/json
+  summary: Update a goal
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    in: path
+    required: true
+    type: integer
+    description: ID of goal to update
+  - name: body
+    description: Fields in the goal to be updated
+    in: body
+    required: true
+    schema:
+      "$ref": "#/definitions/GoalInstance"
+delete:
+  tags:
+  - Goal
+  summary: Delete goal by id
+  produces:
+  - application/json
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    in: path
+    required: true
+    type: integer
+    description: ID of goal to delete

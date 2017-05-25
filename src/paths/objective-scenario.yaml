@@ -1,0 +1,95 @@
+get:
+  tags:
+  - Objective-Scenario
+  produces:
+  - application/json
+  summary: Get objectives by scenario
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: Scenario_Id
+    in: query
+    required: true
+    type: integer
+  - name: Objective_Id
+    in: query
+    required: true
+    type: integer
+delete:
+  tags:
+  - Objective-Scenario
+  produces:
+  - application/json
+  summary: Delete scenario by id
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: body
+    description: Fields to be deleted
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        Objective_Id:
+          type: integer
+        Scenario_Id:
+          type: integer
+put:
+  tags:
+  - Objective-Scenario
+  produces:
+  - application/json
+  summary: Update scenario by id
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: body
+    description: Fields to be updated
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        Objective_Id:
+          type: integer
+          required: true
+        Scenario_Id:
+          type: integer
+          required: true
+        Projection_Probability:
+          type: string
+          example: '1'
+        Priority_Code:
+          type: string
+          example: High
+        Status_Code:
+          type: string
+          example: Active
+        Timeframe_Code:
+          type: string
+          example: Later

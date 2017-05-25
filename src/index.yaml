@@ -1,0 +1,19 @@
+swagger: '2.0'
+info:
+  $ref: ./src/info/index.yaml
+basePath: /customer/gds_r6
+tags:
+  $ref: ./src/tags/index.yaml
+schemes:
+- http
+- https
+paths:
+  $ref: ./src/paths/index.yaml
+definitions:
+  $ref: ./src/definitions/index.yaml
+headers:
+  $ref: ./src/headers/index.yaml
+responses:
+  $ref: ./src/responses/index.yaml
+example:
+  $ref: ./src/example/index.yaml

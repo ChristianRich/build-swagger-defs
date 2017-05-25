@@ -1,0 +1,82 @@
+get:
+  tags:
+  - Projection
+  produces:
+  - application/json
+  summary: Get projection by id
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    in: path
+    required: true
+    type: integer
+delete:
+  tags:
+  - Projection
+  produces:
+  - application/json
+  summary: Delete projection by id
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    in: path
+    required: true
+    type: integer
+put:
+  tags:
+  - Projection
+  produces:
+  - application/json
+  summary: Update projection by id
+  parameters:
+  - name: X-Request-Id
+    in: header
+    description: Correlation ID
+    type: string
+    default: goals-test-swagger
+  - name: Authorization
+    in: header
+    description: Auth token
+    type: string
+    default: Basic YWRwOmFkbWlucGFzcw==
+  - name: id
+    in: path
+    required: true
+    type: integer
+  - name: body
+    description: Fields to be updated
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        Type:
+          type: string
+          example: ''
+        Status:
+          type: string
+          example: ''
+        Input_Xml:
+          type: string
+          example: ''
+        Output_Xml:
+          type: string
+          example: ''

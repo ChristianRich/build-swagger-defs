@@ -1,0 +1,6 @@
+type: object
+properties:
+  validationErrors:
+    type: array
+    items:
+      $ref: "#/definitions/ValidationError"
