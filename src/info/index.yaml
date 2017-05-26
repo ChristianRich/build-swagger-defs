@@ -1,5 +1,6 @@
-description: This is the API service for goal service
+description: Your API description here
 version: 1.0.0
-title: API Goal
+title: My API
 contact:
-  email: Rick_Li_2@amp.com.au
+  email: your@email.com
+

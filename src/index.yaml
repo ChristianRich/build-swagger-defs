@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   $ref: ./src/info/index.yaml
-basePath: /customer/gds_r6
+basePath: /api
 tags:
   $ref: ./src/tags/index.yaml
 schemes:
@@ -15,5 +15,3 @@ headers:
   $ref: ./src/headers/index.yaml
 responses:
   $ref: ./src/responses/index.yaml
-example:
-  $ref: ./src/example/index.yaml

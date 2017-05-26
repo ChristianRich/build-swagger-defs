@@ -1,30 +1,29 @@
 get:
   tags:
-  - Profile
+  - Client
+  summary: Returns client
+  description: Returns client
   produces:
   - application/json
-  summary: Get profile by scenario id
   parameters:
   - name: X-Request-Id
     in: header
     description: Correlation ID
+    required: false
     type: string
     default: goals-test-swagger
   - name: Authorization
     in: header
     description: Auth token
+    required: false
     type: string
     default: Basic YWRwOmFkbWlucGFzcw==
-  - name: scenarioId
+  - name: name
     in: query
     required: true
     type: integer
-  - name: Party_Id
-    in: query
-    required: false
-    type: integer
-  - name: joint
-    in: query
-    required: false
-    type: boolean
-    default: false
+  responses:
+    '200':
+      description: List of clients
+      schema:
+        "$ref": "#/definitions/Person"

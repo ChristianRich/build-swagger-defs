@@ -1,8 +1,0 @@
-type: object
-properties:
-  Scv_Indicator:
-    type: string
-    example: Y
-  Description:
-    type: string
-    example: I am a husband

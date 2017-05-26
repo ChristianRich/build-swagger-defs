@@ -19,7 +19,6 @@
   "homepage": "https://github.com/ChristianRich/amp-swagger-defs#readme",
   "dependencies": {
     "json-refs": "^3.0.0",
-    "minimist": "^1.2.0",
     "swagger-parser": "^3.4.1",
     "yaml-js": "^0.1.5",
     "yamljs": "^0.2.10"

@@ -1,0 +1,11 @@
+type: object
+properties:
+  firstName:
+    type: string
+    example: John
+  lastName:
+    type: string
+    example: Connor
+  dob:
+    type: string
+    example: 12.02.1974

@@ -5,27 +5,10 @@ const resolveRefs = require('json-refs').resolveRefs
 	, fs = require('fs')
 	, path = require('path')
 	, src = path.resolve(process.cwd(), './src/index.yaml')
-	, argv = require('minimist')(process.argv.slice(2));
+	, destJSON = path.resolve(process.cwd(), './output/index.json')
+	, destYAML = path.resolve(process.cwd(), './output/index.yaml');
 
-let swaggerSpecSrc,
-	output = 'json',
-	dest;
-
-if(argv.output && argv.output.length){
-	output = argv.output;
-}
-
-output = output.toLowerCase();
-
-if(output !== 'json' && output !== 'yaml'){
-	throw('Error: Expecting json or yaml for param type');
-}
-
-dest = path.resolve(process.cwd(), './output/index.' + output);
-
-console.log(`Building Swagger spec using output format ${output}`);
-console.log(`src: ${src}`);
-console.log(`dest: ${dest}`);
+let swaggerSpecSrc;
 
 try{
 	swaggerSpecSrc = YAML.load(
@@ -51,26 +34,25 @@ resolveRefs(
 
 .then(function(results){
 
-	const yaml = toYaml.stringify(results.resolved, 8, 2),
-		json = JSON.stringify(results.resolved, null, 2);
-
-	let data;
-
-	if(output === 'json'){
-		data = json;
-	}
-
-	if(output === 'yaml'){
-		data = yaml;
-	}
+	const json = JSON.stringify(results.resolved, null, 2),
+		yaml = toYaml.stringify(results.resolved, 8, 2);
 
 	try{
-		fs.writeFileSync(dest, data);
+		fs.writeFileSync(destJSON, json);
 	} catch(e){
+		console.log(`Error writing file to: ${destJSON}`);
 		throw e;
 	}
 
-	return SwaggerParser.validate(dest);
+	try{
+		fs.writeFileSync(destYAML, yaml);
+	} catch(e){
+		console.log(`Error writing file to: ${destYAML}`);
+		throw e;
+	}
+
+	console.log('destJSON: ' + destJSON)
+	return SwaggerParser.validate(destJSON);
 })
 
 .then(function(api){

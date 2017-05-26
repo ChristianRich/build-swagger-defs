@@ -38,7 +38,7 @@ Conflict:
           If presenting an error message to a user, clients should map the type to an appropriate error message
           rather than displaying the type
         type: string
-        example: au.com.amp.advice.error.conflict.too-many-objectives
+        example: error.conflict.too-many-objectives
 NotImplemented:
   description: Not Implemented
 ServiceUnavailable:
@@ -46,21 +46,6 @@ ServiceUnavailable:
   headers:
      Retry-After:
       $ref: "#/headers/Retry-After"
-#CollectionPage:
-#  description: A Page of a collection
-#  schema:
-#    $ref: "./src/main/exchange-formats/example/collection.yaml#/Page"
-#  headers:
-#    ETag:
-#      $ref: "#/headers/ETag"
-#    Cache-Control:
-#      $ref: "#/headers/Cache-Control"
-#    Vary:
-#      $ref: "#/headers/Vary"
-#    Content-Type:
-#      $ref: "#/headers/Content-Type"
-#    Date:
-#      $ref: "#/headers/Date"
 GenricObject:
   description: A Generic Response containing a JSON Object
   schema:
