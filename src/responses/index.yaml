@@ -4,24 +4,24 @@ Created:
     Location:
       x-additional-description:
         Set this to the URL of the created resource
-      $ref: "#/headers/Location"
+      $ref: "#/definitions/Location"
     ETag:
       x-additional-description:
         Set this to the Entity Tag of the create resource
-      $ref: "#/headers/ETag"
+      $ref: "#/definitions/ETag"
 NoContent:
   description: Action was performed successfully
 NotFound:
   description: The resource requested does not exist
-BadRequest:
-  description: Bad Request. A list of the validation errors will be included in the body
-  schema:
-    $ref: "#/definitions/ValidationErrorsList"
+#BadRequest:
+#  description: Bad Request. A list of the validation errors will be included in the body
+#  schema:
+#    $ref: "#/definitions/ValidationErrorsList"
 Unauthorized:
   description: Unauthorized
   headers:
      WWW-Authenticate:
-      $ref: "#/headers/WWW-Authenticate"
+      $ref: "#/definitions/WWW-Authenticate"
 Forbidden:
   description: Forbidden
 Conflict:
@@ -38,14 +38,14 @@ Conflict:
           If presenting an error message to a user, clients should map the type to an appropriate error message
           rather than displaying the type
         type: string
-        example: error.conflict.too-many-objectives
+        example: au.com.amp.advice.error.conflict.too-many-objectives
 NotImplemented:
   description: Not Implemented
 ServiceUnavailable:
   description: Service Unavailable
   headers:
      Retry-After:
-      $ref: "#/headers/Retry-After"
+      $ref: "#/definitions/Retry-After"
 GenricObject:
   description: A Generic Response containing a JSON Object
   schema:

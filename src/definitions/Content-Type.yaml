@@ -1,0 +1,5 @@
+description: |
+    The Content-Type entity-header field indicates the media type of the entity-body sent to the recipient or, in the case of the HEAD method, the media type that would have been sent had the request been a GET.
+
+    https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17
+type: string

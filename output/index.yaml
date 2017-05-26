@@ -14,8 +14,59 @@ schemes:
   - http
   - https
 paths:
-  $ref: ./src/paths/index.yaml
+  /clients:
+    get:
+      tags:
+        - Client
+      summary: 'Returns list of client'
+      description: 'Returns list of client'
+      produces:
+        - application/json
+      parameters:
+        -
+          name: X-Request-Id
+          in: header
+          description: 'Correlation ID'
+          required: false
+          type: string
+          default: goals-test-swagger
+        -
+          name: Authorization
+          in: header
+          description: 'Auth token'
+          required: false
+          type: string
+          default: 'Basic gWdwxzfFkbWlucGFzcw=='
+        -
+          name: name
+          in: query
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: 'List of clients'
+          schema:
+            $ref: '#/definitions/Person'
 definitions:
+  Cache-Control:
+    description: "The Cache-Control general-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain. The directives specify behavior intended to prevent caches from adversely interfering with the request or response. These directives typically override the default caching algorithms. Cache directives are unidirectional in that the presence of a directive in a request does not imply that the same directive is to be given in the response.\n\nhttps://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9\n"
+    type: array
+    items:
+      type: string
+  Content-Type:
+    description: "The Content-Type entity-header field indicates the media type of the entity-body sent to the recipient or, in the case of the HEAD method, the media type that would have been sent had the request been a GET.\n\nhttps://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17\n"
+    type: string
+  Date:
+    description: "The Date general-header field represents the date and time at which the message was originated, having the same semantics as orig-date in RFC 822.\n\nhttps://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.18\n"
+    type: string
+  ETag:
+    description: "The ETag response-header field provides the value of the entity tag for the requested entity.\nThe entity tag MAY be used for comparison with other entities from the same resource.\n\nhttps://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19\n"
+    type: string
+    pattern: '([wW]/)?"([^"]|\\")*"'
+  Location:
+    description: "The Location response-header field is used to redirect the recipient to a location other than the Request-URI for completion of the request or identification of a new resource. For 201 (Created) responses, the Location is that of the new resource which was created by the request. For 3xx responses, the location SHOULD indicate the server's preferred URI for automatic redirection to the resource. The field value consists of a single absolute URI.\n\nhttps://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30\n"
+    type: string
+    format: uri
   Person:
     type: object
     properties:
@@ -28,62 +79,36 @@ definitions:
       dob:
         type: string
         example: 12.02.1974
-headers:
-  ETag:
-    description: "The ETag response-header field provides the value of the entity tag for the requested entity.\nThe entity tag MAY be used for comparison with other entities from the same resource.\n\nhttps://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19\n"
+  Retry-After:
+    description: "The Retry-After response-header field can be used with a 503 (Service Unavailable) response to indicate how long the service is expected to be unavailable to the requesting client.\n\nhttps://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.37\n"
     type: string
-    pattern: '([wW]/)?"([^"]|\\")*"'
-  Cache-Control:
-    description: "The Cache-Control general-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain. The directives specify behavior intended to prevent caches from adversely interfering with the request or response. These directives typically override the default caching algorithms. Cache directives are unidirectional in that the presence of a directive in a request does not imply that the same directive is to be given in the response.\n\nhttps://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9\n"
-    type: array
-    items:
-      collectionFormat: csv
-      type: string
   Vary:
     description: "The Vary field value indicates the set of request-header fields that fully determines, while the response is fresh, whether a cache is permitted to use the response to reply to a subsequent request without revalidation.\n\nhttps://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.44\n"
     type: array
     items:
-      collectionFormat: csv
       type: string
-  Content-Type:
-    description: "The Content-Type entity-header field indicates the media type of the entity-body sent to the recipient or, in the case of the HEAD method, the media type that would have been sent had the request been a GET.\n\nhttps://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17\n"
-    type: string
-  Date:
-    description: "The Date general-header field represents the date and time at which the message was originated, having the same semantics as orig-date in RFC 822.\n\nhttps://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.18\n"
-    type: string
-  Retry-After:
-    description: "The Retry-After response-header field can be used with a 503 (Service Unavailable) response to indicate how long the service is expected to be unavailable to the requesting client.\n\nhttps://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.37\n"
-    type: string
   WWW-Authenticate:
     description: "The WWW-Authenticate response-header field MUST be included in 401 (Unauthorized) response messages. The field value consists of at least one challenge that indicates the authentication scheme(s) and parameters applicable to the Request-URI.\n\nhttps://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.47\n"
     type: string
-  Location:
-    description: "The Location response-header field is used to redirect the recipient to a location other than the Request-URI for completion of the request or identification of a new resource. For 201 (Created) responses, the Location is that of the new resource which was created by the request. For 3xx responses, the location SHOULD indicate the server's preferred URI for automatic redirection to the resource. The field value consists of a single absolute URI.\n\nhttps://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30\n"
-    type: string
-    format: uri
 responses:
   Created:
     description: Created
     headers:
       Location:
         x-additional-description: 'Set this to the URL of the created resource'
-        $ref: '#/headers/Location'
+        $ref: '#/definitions/Location'
       ETag:
         x-additional-description: 'Set this to the Entity Tag of the create resource'
-        $ref: '#/headers/ETag'
+        $ref: '#/definitions/ETag'
   NoContent:
     description: 'Action was performed successfully'
   NotFound:
     description: 'The resource requested does not exist'
-  BadRequest:
-    description: 'Bad Request. A list of the validation errors will be included in the body'
-    schema:
-      $ref: '#/definitions/ValidationErrorsList'
   Unauthorized:
     description: Unauthorized
     headers:
       WWW-Authenticate:
-        $ref: '#/headers/WWW-Authenticate'
+        $ref: '#/definitions/WWW-Authenticate'
   Forbidden:
     description: Forbidden
   Conflict:
@@ -94,14 +119,14 @@ responses:
         conflictType:
           description: "The type of conflict type that has occured.\n\nIf presenting an error message to a user, clients should map the type to an appropriate error message\nrather than displaying the type\n"
           type: string
-          example: error.conflict.too-many-objectives
+          example: au.com.amp.advice.error.conflict.too-many-objectives
   NotImplemented:
     description: 'Not Implemented'
   ServiceUnavailable:
     description: 'Service Unavailable'
     headers:
       Retry-After:
-        $ref: '#/headers/Retry-After'
+        $ref: '#/definitions/Retry-After'
   GenricObject:
     description: 'A Generic Response containing a JSON Object'
     schema:

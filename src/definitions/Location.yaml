@@ -1,0 +1,6 @@
+description: |
+  The Location response-header field is used to redirect the recipient to a location other than the Request-URI for completion of the request or identification of a new resource. For 201 (Created) responses, the Location is that of the new resource which was created by the request. For 3xx responses, the location SHOULD indicate the server's preferred URI for automatic redirection to the resource. The field value consists of a single absolute URI.
+
+  https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30
+type: string
+format: uri

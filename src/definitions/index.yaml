@@ -1,2 +1,18 @@
+Cache-Control:
+  $ref: ./Cache-Control.yaml
+Content-Type:
+  $ref: ./Content-Type.yaml
+Date:
+  $ref: ./Date.yaml
+ETag:
+  $ref: ./ETag.yaml
+Location:
+  $ref: ./Location.yaml
 Person:
-  $ref: ./person.yaml
+  $ref: ./Person.yaml
+Retry-After:
+  $ref: ./Retry-After.yaml
+Vary:
+  $ref: ./Vary.yaml
+WWW-Authenticate:
+  $ref: ./WWW-Authenticate.yaml

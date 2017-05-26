@@ -1,8 +1,8 @@
 get:
   tags:
   - Client
-  summary: Returns client
-  description: Returns client
+  summary: Returns list of client
+  description: Returns list of client
   produces:
   - application/json
   parameters:
@@ -17,7 +17,7 @@ get:
     description: Auth token
     required: false
     type: string
-    default: Basic YWRwOmFkbWlucGFzcw==
+    default: Basic gWdwxzfFkbWlucGFzcw==
   - name: name
     in: query
     required: true

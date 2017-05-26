@@ -1,0 +1,5 @@
+description: |
+  The WWW-Authenticate response-header field MUST be included in 401 (Unauthorized) response messages. The field value consists of at least one challenge that indicates the authentication scheme(s) and parameters applicable to the Request-URI.
+
+  https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.47
+type: string

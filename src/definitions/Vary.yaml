@@ -1,0 +1,7 @@
+description: |
+  The Vary field value indicates the set of request-header fields that fully determines, while the response is fresh, whether a cache is permitted to use the response to reply to a subsequent request without revalidation.
+
+  https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.44
+type: array
+items:
+  type: string

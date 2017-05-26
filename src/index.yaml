@@ -11,7 +11,5 @@ paths:
   $ref: ./src/paths/index.yaml
 definitions:
   $ref: ./src/definitions/index.yaml
-headers:
-  $ref: ./src/headers/index.yaml
 responses:
   $ref: ./src/responses/index.yaml
